@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>منيو رقمي احترافي</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            direction: ltr;
+        }
+        body { font-family: 'IBM Plex Sans Arabic', sans-serif; background-color: #f8fafc; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="text-slate-800 min-h-screen pb-32">
+
+    <!-- Header (Logo & Name) -->
+    <header class="bg-white sticky top-0 z-50 shadow-sm border-b border-slate-100 py-3 px-4 flex flex-col items-center justify-center text-center">
+        <div class="w-16 h-16 bg-amber-500 rounded-full flex items-center justify-center shadow-sm mb-1 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=150" alt="Logo" class="w-full h-full object-cover">
+        </div>
+        <h1 class="text-xl font-bold text-slate-900">اسم المطعم والشركة</h1>
+        <p class="text-xs text-slate-400 font-medium tracking-wide mt-0.5 uppercase">Restaurant Name Here</p>
+        
+        <!-- Live Search Bar -->
+        <div class="w-full max-w-md mt-3 relative">
+            <span class="material-symbols-outlined absolute right-3 top-2.5 text-slate-400 text-xl">search</span>
+            <input type="text" id="search-input" oninput="searchProducts()" placeholder="ابحث عن منتج أو وجبة..." class="w-full pl-4 pr-10 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all">
+        </div>
+    </header>
+
+    <main class="max-w-md mx-auto px-4 mt-4">
+
+        <!-- Quick Categories Navigation -->
+        <div id="categories-nav" class="flex gap-2 overflow-x-auto no-scrollbar pb-3 mb-4 sticky top-[182px] bg-slate-50/90 backdrop-blur-md z-40 py-2">
+            <a href="#electronics" class="whitespace-nowrap px-5 py-2 rounded-full bg-amber-500 text-white font-medium text-sm shadow-sm">إلكترونيات</a>
+            <a href="#fashion" class="whitespace-nowrap px-5 py-2 rounded-full bg-white text-slate-600 border border-slate-200 font-medium text-sm hover:bg-slate-50">أزياء</a>
+            <a href="#home" class="whitespace-nowrap px-5 py-2 rounded-full bg-white text-slate-600 border border-slate-200 font-medium text-sm hover:bg-slate-50">منزل</a>
+        </div>
+
+        <!-- Section: Electronics -->
+        <section id="electronics" class="category-section mb-8 scroll-mt-48">
+            <h3 class="category-title text-lg font-bold text-slate-900 border-r-4 border-amber-500 pr-2 mb-4">إلكترونيات</h3>
+            <div class="flex flex-col gap-3">
+                <!-- item 1 -->
+                <div class="product-card bg-white p-3 rounded-xl border border-slate-100 flex items-center justify-between gap-3 shadow-sm">
+                    <div class="flex items-center gap-3">
+                        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=150" class="w-20 h-20 rounded-lg object-cover bg-slate-100" />
+                        <div>
+                            <h4 class="font-bold text-slate-800 text-base product-name">هاتف ذكي أحدث طراز</h4>
+                            <p class="text-xs text-slate-400 line-clamp-1 mb-1">كاميرا ٥٠ ميجابكسل، شاشة سوبر ريتنا</p>
+                            <span class="text-amber-600 font-bold text-sm product-price" data-price="2999">٢٩٩٩ ج.م</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="changeQty(this, -1)" class="w-8 h-8 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center font-bold font-mono">-</button>
+                        <span class="font-bold text-sm text-slate-800 item-qty font-mono">0</span>
+                        <button onclick="changeQty(this, 1)" class="w-8 h-8 rounded-full bg-amber-500 text-white flex items-center justify-center font-bold font-mono">+</button>
+                    </div>
+                </div>
+                <!-- item 2 -->
+                <div class="product-card bg-white p-3 rounded-xl border border-slate-100 flex items-center justify-between gap-3 shadow-sm">
+                    <div class="flex items-center gap-3">
+                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=150" class="w-20 h-20 rounded-lg object-cover bg-slate-100" />
+                        <div>
+                            <h4 class="font-bold text-slate-800 text-base product-name">سماعات رأس لاسلكية</h4>
+                            <p class="text-xs text-slate-400 line-clamp-1 mb-1">عزل ضوضاء فائق، بطارية ٤٠ ساعة</p>
+                            <span class="text-amber-600 font-bold text-sm product-price" data-price="1250">١٢٥٠ ج.م</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="changeQty(this, -1)" class="w-8 h-8 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center font-bold font-mono">-</button>
+                        <span class="font-bold text-sm text-slate-800 item-qty font-mono">0</span>
+                        <button onclick="changeQty(this, 1)" class="w-8 h-8 rounded-full bg-amber-500 text-white flex items-center justify-center font-bold font-mono">+</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Fashion -->
+        <section id="fashion" class="category-section mb-8 scroll-mt-48">
+            <h3 class="category-title text-lg font-bold text-slate-900 border-r-4 border-amber-500 pr-2 mb-4">أزياء</h3>
+            <div class="flex flex-col gap-3">
+                <!-- item 3 -->
+                <div class="product-card bg-white p-3 rounded-xl border border-slate-100 flex items-center justify-between gap-3 shadow-sm">
+                    <div class="flex items-center gap-3">
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=150" class="w-20 h-20 rounded-lg object-cover bg-slate-100" />
+                        <div>
+                            <h4 class="font-bold text-slate-800 text-base product-name">ساعة يد فاخرة</h4>
+                            <p class="text-xs text-slate-400 line-clamp-1 mb-1">مقاومة للماء، زجاج ياقوتي فاخر</p>
+                            <span class="text-amber-600 font-bold text-sm product-price" data-price="4500">٤٥٠٠ ج.م</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="changeQty(this, -1)" class="w-8 h-8 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center font-bold font-mono">-</button>
+                        <span class="font-bold text-sm text-slate-800 item-qty font-mono">0</span>
+                        <button onclick="changeQty(this, 1)" class="w-8 h-8 rounded-full bg-amber-500 text-white flex items-center justify-center font-bold font-mono">+</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Home -->
+        <section id="home" class="category-section mb-8 scroll-mt-48">
+            <h3 class="category-title text-lg font-bold text-slate-900 border-r-4 border-amber-500 pr-2 mb-4">منزل</h3>
+            <div class="flex flex-col gap-3">
+                <!-- item 4 -->
+                <div class="product-card bg-white p-3 rounded-xl border border-slate-100 flex items-center justify-between gap-3 shadow-sm">
+                    <div class="flex items-center gap-3">
+                        <img src="https://images.unsplash.com/photo-1517914102421-e22e666f7fcf?w=150" class="w-20 h-20 rounded-lg object-cover bg-slate-100" />
+                        <div>
+                            <h4 class="font-bold text-slate-800 text-base product-name">ماكينة قهوة حديثة</h4>
+                            <p class="text-xs text-slate-400 line-clamp-1 mb-1">إسبريسو مثالي وسريع في منزلك</p>
+                            <span class="text-amber-600 font-bold text-sm product-price" data-price="1800">١٨٠٠ ج.م</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="changeQty(this, -1)" class="w-8 h-8 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center font-bold font-mono">-</button>
+                        <span class="font-bold text-sm text-slate-800 item-qty font-mono">0</span>
+                        <button onclick="changeQty(this, 1)" class="w-8 h-8 rounded-full bg-amber-500 text-white flex items-center justify-center font-bold font-mono">+</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="w-full py-6 flex flex-col items-center gap-4 bg-white border-t border-slate-100 rounded-xl mt-8 mb-12 text-center shadow-sm">
+            <div class="text-sm font-bold text-slate-700">تابعونا على منصاتنا</div>
+            <div class="flex gap-4">
+                <a href="#" class="w-9 h-9 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center"><span class="material-symbols-outlined text-xl">public</span></a>
+                <a href="#" class="w-9 h-9 rounded-full bg-pink-50 text-pink-600 flex items-center justify-center"><span class="material-symbols-outlined text-xl">photo_camera</span></a>
+                <a href="#" class="w-9 h-9 rounded-full bg-slate-100 text-slate-900 flex items-center justify-center"><span class="material-symbols-outlined text-xl">music_note</span></a>
+            </div>
+            <p class="text-xs text-slate-400 mt-2">© جميع الحقوق محفوظة للمطعم والشركة</p>
+        </footer>
+    </main>
+
+    <!-- Bottom Order Action Bar -->
+    <div id="order-bar" class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white/90 backdrop-blur-lg border-t border-slate-100 p-4 rounded-t-2xl shadow-[0_-8px_30px_rgba(0,0,0,0.05)] z-50 flex items-center justify-between gap-4 hidden">
+        <div>
+            <p class="text-xs text-slate-400 font-medium">إجمالي الحساب:</p>
+            <span id="total-price-display" class="text-lg font-black text-amber-600 font-mono">0 ج.م</span>
+        </div>
+        <button onclick="openUserModal()" class="flex-grow bg-emerald-500 hover:bg-emerald-600 text-white py-3 px-4 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-all shadow-md">
+            <span class="material-symbols-outlined text-lg">shopping_cart</span>
+            اطلب الآن
+        </button>
+    </div>
+
+    <!-- User Info Modal Popup -->
+    <div id="user-modal" class="fixed inset-0 bg-black/50 z-[60] flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-2xl w-full max-w-sm p-6 shadow-xl animate-in fade-in zoom-in duration-200">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-bold text-slate-900">إكمال تفاصيل الطلب</h3>
+                <button onclick="closeUserModal()" class="text-slate-400 hover:text-slate-600"><span class="material-symbols-outlined">close</span></button>
+            </div>
+            <div class="flex flex-col gap-3">
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 mb-1">الاسم الكريم:</label>
+                    <input type="text" id="user-name" placeholder="مثال: محمد السيد" class="w-full p-2.5 border border-slate-200 bg-slate-50 rounded-xl text-sm focus:outline-none focus:border-amber-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 mb-1">رقم الطاولة أو عنوان التوصيل:</label>
+                    <input type="text" id="user-location" placeholder="طاولة رقم 5 / أو عنوانك بالتفصيل" class="w-full p-2.5 border border-slate-200 bg-slate-50 rounded-xl text-sm focus:outline-none focus:border-amber-500">
+                </div>
+                <button onclick="sendOrderToWhatsApp()" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white py-3 rounded-xl font-bold text-sm mt-2 flex items-center justify-center gap-2 shadow-md">
+                    <span class="material-symbols-outlined text-lg">chat</span>
+                    تأكيد وإرسال عبر الواتساب
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script for Logic -->
+    <script>
+        const WHATSAPP_NUMBER = "201000000000"; // رقم واتساب العميل بكود الدولة
+
+        function changeQty(btn, val) {
+            const container = btn.parentElement;
+            const qtySpan = container.querySelector('.item-qty');
+            let currentQty = parseInt(qtySpan.innerText);
+            currentQty += val;
+            if (currentQty < 0) currentQty = 0;
+            qtySpan.innerText = currentQty;
+            calculateTotal();
+        }
+
+        function calculateTotal() {
+            let total = 0;
+            let hasItems = false;
+            document.querySelectorAll('.item-qty').forEach(qtySpan => {
+                const qty = parseInt(qtySpan.innerText);
+                if (qty > 0) {
+                    hasItems = true;
+                    const price = parseFloat(qtySpan.closest('.product-card').querySelector('.product-price').getAttribute('data-price'));
+                    total += (price * qty);
+                }
+            });
+            const orderBar = document.getElementById('order-bar');
+            document.getElementById('total-price-display').innerText = total + " ج.م";
+            if (hasItems) orderBar.classList.remove('hidden');
+            else orderBar.classList.add('hidden');
+        }
+
+        function searchProducts() {
+            const query = document.getElementById('search-input').value.toLowerCase().trim();
+            const cards = document.querySelectorAll('.product-card');
+            const sections = document.querySelectorAll('.category-section');
+            const nav = document.getElementById('categories-nav');
+
+            if (query === "") {
+                cards.forEach(card => card.classList.remove('hidden'));
+                sections.forEach(sec => sec.classList.remove('hidden'));
+                nav.classList.remove('hidden');
+                return;
+            }
+
+            nav.classList.add('hidden'); // إخفاء الفئات أثناء البحث لمنع التشتت
+
+            sections.forEach(section => {
+                let hasVisibleCard = false;
+                const sectionCards = section.querySelectorAll('.product-card');
+                
+                sectionCards.forEach(card => {
+                    const name = card.querySelector('.product-name').innerText.toLowerCase();
+                    if (name.includes(query)) {
+                        card.classList.remove('hidden');
+                        hasVisibleCard = true;
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+
+                if (hasVisibleCard) section.classList.remove('hidden');
+                else section.classList.add('hidden');
+            });
+        }
+
+        function openUserModal() { document.getElementById('user-modal').classList.remove('hidden'); }
+        function closeUserModal() { document.getElementById('user-modal').classList.add('hidden'); }
+
+        function sendOrderToWhatsApp() {
+            const name = document.getElementById('user-name').value.trim();
+            const location = document.getElementById('user-location').value.trim();
+
+            if(!name || !location) {
+                alert("برجاء إدخال الاسم والموقع/الطاولة لتأكيد طلبك سرياناً.");
+                return;
+            }
+
+            let text = `📌 *طلب جديد من المنيو الرقمي* \n\n`;
+            text += `👤 *العميل:* ${name}\n`;
+            text += `📍 *المكان / الطاولة:* ${location}\n`;
+            text += `──────────────────\n\n`;
+
+            let total = 0;
+            document.querySelectorAll('.item-qty').forEach(qtySpan => {
+                const qty = parseInt(qtySpan.innerText);
+                if (qty > 0) {
+                    const parent = qtySpan.closest('.product-card');
+                    const pName = parent.querySelector('.product-name').innerText;
+                    const price = parseFloat(parent.querySelector('.product-price').getAttribute('data-price'));
+                    const itemTotal = price * qty;
+                    total += itemTotal;
+                    text += `🔹 *${pName}* \n  العدد: ${qty} | السعر: ${itemTotal} ج.م \n\n`;
+                }
+            });
+
+            text += `──────────────────\n`;
+            text += `💰 *إجمالي الحساب النهائي:* ${total} ج.م`;
+
+            const encodedText = encodeURIComponent(text);
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodedText}`, '_blank');
+            closeUserModal();
+        }
+    </script>
+</body>
+</html>
